@@ -1,9 +1,10 @@
 # Anomaly Detection - Credit Card Fraud Detection
 
+Anomaly detection is a technique for finding an unusual point or pattern in a given set.
 
-Demand forecasting is the process of making estimations about future customer demand over a defined period, using historical data and other information. 
+The term anomaly is also referred to as outlier. Earlier, the data mining researchers were focused on other techniques like classification and clustering. Outlier are found as a part of data cleansing process.
 
-Usually organisations follow tranditional forecasting techniques/algorithms such as Auto Arima, Auto Arima, Sarima, Simple moving average and many more.
+However, view underwent a change in 2000 when researchers found detection of abnormal things can help solving the real world problems seen in damage detection, fraud detection, detection of abnormal health condition and intrusion detection.
 
 ## Table of Contents
 
@@ -14,35 +15,49 @@ Usually organisations follow tranditional forecasting techniques/algorithms such
 
 ## Goal <a name = "goal"></a>
 
-Due to the recent boost in AI world, companies have started researching the possibility of using machine learning in place of tranditional approach.
-
-Tuning traditional algorithms takes a significant amount of effords and domain expertise as well. 
-
-In this repo, we are trying to figure out a way of predict the same using machine learning algorithms. 
-
+In this notebook we'll be using multiple machine learning algorithms to detect and classify suspicious credit card transactions.
 
 ## Data <a name = "dataset"></a>
 
-The dataset comprised of units sold on a daily basis along with details regarding the sales, eg. SKU(product id), Store, price etc.
+The dataset contains transactions made by credit cards in September 2013 by European cardholders.
 
-*record_ID,	week,	store_id,	sku_id,	total_price,	base_price,	is_featured_sku,	is_display_sku,	units_sold*
+The dataset is highly unbalanced.
+
+It contains only numerical input variables which are the result of a PCA transformation. Features V1, V2, … V28 are the principal components obtained with PCA, the only features which have not been transformed with PCA are 'Time' and 'Amount'. 
 
 
 ## Workflow <a name = "workflow"></a>
 
-- Handling missing values
-- Feature selection based on my previous experience in Supply chain domain
-- Converting dataset into time series format to apply supervised learning approach.
-- Regression Modeling
-  - Random Forest
-  - XGBoost
-  - SVM (future scope)
-- Hyperparameter Tuning
+- Basic EDA
+- Feature scaling
+- Modeling (Imbalanced Dataset)
+    - SVC
+    - KNearest Neighbours
+    - Random Forest
+    - Isolation Forest
+    - Local Outlier Factor
+- Modeling (Over Sampling)
+    - SVC
+    - KNearest Neighbours
+    - Random Forest
+    - Isolation Forest
+    - Local Outlier Factor
+- Modeling (Under Sampling)
+    - SVC
+    - KNearest Neighbours
+    - Random Forest
+    - Isolation Forest
+    - Local Outlier Factor
+- Cross Validation
+    - Random Forest
+- Conclusion
 
 ## Result
-![train](https://github.com/shreyas-jk/Demand-Forecasting-Using-ML/blob/main/final.png?raw=true)
+Random Forest + Under sampling is giving us good accuracy.
 
+But it can also be a case of over-fitting.
 
+To validate this hypothesis, we applied cross validation and confirmed, there is no over-fitting.
 
 ## Required Packages <a name = "require"></a>
 
@@ -50,7 +65,5 @@ The dataset comprised of units sold on a daily basis along with details regardin
 - pandas
 - sklearn
 - easypreprocessing 
-- seaborn 
-- matplotlib
-- xgboost
+- seaborn
 
